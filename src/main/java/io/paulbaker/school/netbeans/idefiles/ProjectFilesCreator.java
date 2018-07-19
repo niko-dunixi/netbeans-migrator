@@ -30,7 +30,11 @@ public class ProjectFilesCreator {
                 new File(destinationProjectDirectory, "build.xml"),
                 new BuildXml(projectName)
         );
-
-
+        //noinspection ResultOfMethodCallIgnored
+        new File(destinationProjectDirectory, "nbproject").mkdirs();
+        xmlMapper.writeValue(
+                new File(destinationProjectDirectory, "nbproject/project.xml"),
+                new ProjectXml(projectName)
+        );
     }
 }
