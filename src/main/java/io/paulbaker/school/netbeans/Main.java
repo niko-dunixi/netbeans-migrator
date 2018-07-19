@@ -15,11 +15,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ConverterArguments parsedArguments = ConverterArguments.parseArguments(args);
 
-        File inputProjectDirectory = parsedArguments.getInputProjectDirectory();
-
         File projectDirectory = new File(parsedArguments.getOutputProjectDirectory(), parsedArguments.getProjectName());
 
-        SourceFileCopier sourceFileCopier = new SourceFileCopier(inputProjectDirectory, projectDirectory);
+        SourceFileCopier sourceFileCopier = new SourceFileCopier(parsedArguments.getInputProjectDirectory(), projectDirectory);
         sourceFileCopier.copy();
+
+        ProjectFilesCreator projectFilesCreator = new ProjectFilesCreator(projectDirectory, parsedArguments.getProjectName());
+        projectFilesCreator.generate();
     }
 }
