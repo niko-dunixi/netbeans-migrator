@@ -8,6 +8,8 @@ import lombok.Getter;
 
 import java.io.File;
 
+import static java.util.Objects.isNull;
+
 /**
  * @author Paul Nelson Baker
  * @see <a href="https://github.com/paul-nelson-baker/">GitHub</a>
@@ -21,7 +23,7 @@ public class ConverterArguments {
     @Parameter(names = {"--input"}, description = "The path to the root of the java-project we need to convert", converter = FileConverter.class, required = true)
     private File inputProjectDirectory;
 
-    @Parameter(names = {"--output"}, description = "The path where the new Netbeans project will be created", converter = FileConverter.class, required = true)
+    @Parameter(names = {"--output"}, description = "The path where the new Netbeans project will be created", converter = FileConverter.class)
     private File outputProjectDirectory;
 
     @Parameter(names = {"--project-name"}, description = "The name of the newly generated project", required = true)
@@ -42,6 +44,10 @@ public class ConverterArguments {
         if (!parsedConverterArguments.getInputProjectDirectory().exists()) {
             System.out.println("Input directory does not exist");
             System.exit(1);
+        }
+        if (isNull(parsedConverterArguments.outputProjectDirectory)) {
+            String homeDirectory = System.getProperty("user.home");
+            parsedConverterArguments.outputProjectDirectory = new File(homeDirectory, "NetBeansProjects");
         }
         return parsedConverterArguments;
     }
