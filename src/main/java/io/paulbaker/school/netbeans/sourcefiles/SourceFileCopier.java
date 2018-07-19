@@ -1,4 +1,4 @@
-package io.paulbaker.school.netbeans;
+package io.paulbaker.school.netbeans.sourcefiles;
 
 import lombok.AllArgsConstructor;
 

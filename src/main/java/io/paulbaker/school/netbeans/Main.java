@@ -1,5 +1,8 @@
 package io.paulbaker.school.netbeans;
 
+import io.paulbaker.school.netbeans.idefiles.ProjectFilesCreator;
+import io.paulbaker.school.netbeans.sourcefiles.SourceFileCopier;
+
 import java.io.File;
 import java.io.IOException;
 
