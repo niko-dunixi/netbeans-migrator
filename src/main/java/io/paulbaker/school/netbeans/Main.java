@@ -1,5 +1,8 @@
 package io.paulbaker.school.netbeans;
 
+import java.io.File;
+import java.io.IOException;
+
 /**
  * @author Paul Nelson Baker
  * @see <a href="https://github.com/paul-nelson-baker/">GitHub</a>
@@ -9,8 +12,14 @@ package io.paulbaker.school.netbeans;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ConverterArguments parsedArguments = ConverterArguments.parseArguments(args);
-//        Objects.requireNonNull(parsedArguments.getInputProjectDirectory(), )
+
+        File inputProjectDirectory = parsedArguments.getInputProjectDirectory();
+
+        File projectDirectory = new File(parsedArguments.getOutputProjectDirectory(), parsedArguments.getProjectName());
+
+        SourceFileCopier sourceFileCopier = new SourceFileCopier(inputProjectDirectory, projectDirectory);
+        sourceFileCopier.copy();
     }
 }

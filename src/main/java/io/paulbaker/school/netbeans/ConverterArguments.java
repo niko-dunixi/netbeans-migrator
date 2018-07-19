@@ -24,6 +24,9 @@ public class ConverterArguments {
     @Parameter(names = {"--output"}, description = "The path where the new Netbeans project will be created", converter = FileConverter.class, required = true)
     private File outputProjectDirectory;
 
+    @Parameter(names = {"--project-name"}, description = "The name of the newly generated project", required = true)
+    private String projectName;
+
     public static ConverterArguments parseArguments(String[] args) {
         ConverterArguments parsedConverterArguments = new ConverterArguments();
         JCommander build = JCommander.newBuilder()
@@ -38,10 +41,6 @@ public class ConverterArguments {
         }
         if (!parsedConverterArguments.getInputProjectDirectory().exists()) {
             System.out.println("Input directory does not exist");
-            System.exit(1);
-        }
-        if (parsedConverterArguments.getOutputProjectDirectory().exists()) {
-            System.out.println("Output directory already exists");
             System.exit(1);
         }
         return parsedConverterArguments;
