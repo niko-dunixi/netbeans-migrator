@@ -36,6 +36,14 @@ public class ConverterArguments {
             build.usage();
             System.exit(1);
         }
+        if (!parsedConverterArguments.getInputProjectDirectory().exists()) {
+            System.out.println("Input directory does not exist");
+            System.exit(1);
+        }
+        if (parsedConverterArguments.getOutputProjectDirectory().exists()) {
+            System.out.println("Output directory already exists");
+            System.exit(1);
+        }
         return parsedConverterArguments;
     }
 }
