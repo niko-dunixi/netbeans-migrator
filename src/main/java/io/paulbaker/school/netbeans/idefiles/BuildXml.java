@@ -2,7 +2,6 @@ package io.paulbaker.school.netbeans.idefiles;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -26,22 +25,16 @@ public class BuildXml {
     @JacksonXmlProperty(isAttribute = true)
     private String basedir = ".";
 
-    private Description description;
+    @JacksonXmlProperty(localName = "description")
+    private TextValueElement description;
 
     @JacksonXmlProperty(localName = "import")
     private Import anImport;
 
     BuildXml(String name) {
         this.name = name;
-        description = new Description(String.format("Builds, tests, and runs the project %s", name));
+        description = new TextValueElement(String.format("Builds, tests, and runs the project %s", name));
         anImport = new Import("nbproject/build-impl.xml");
-    }
-
-    @Getter
-    @AllArgsConstructor
-    public static class Description {
-        @JacksonXmlText
-        private String value;
     }
 
     @Getter
