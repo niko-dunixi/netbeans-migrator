@@ -22,7 +22,7 @@ public class ProjectFilesCreator {
 
     public void generate() throws IOException {
         // Main folder
-        writeResource("build.xml", new File(destinationProjectDirectory, "build.xml"));
+        writeResource("netbeansprojectfiles/build.xml", new File(destinationProjectDirectory, "build.xml"));
         writeText(new String[]{
                 "Manifest-Version: 1.0",
                 "X-COMMENT: Main-Class will be added automatically by build",
@@ -32,10 +32,10 @@ public class ProjectFilesCreator {
         File nbprojectDirectory = new File(destinationProjectDirectory, "nbproject");
         //noinspection ResultOfMethodCallIgnored
         nbprojectDirectory.mkdirs();
-        writeResource("project.xml", new File(nbprojectDirectory, "project.xml"));
-        writeResource("project.properties", new File(nbprojectDirectory, "project.properties"));
-        writeResource("genfiles.properties", new File(nbprojectDirectory, "genfiles.properties"));
-        writeResource("build-impl.xml", new File(nbprojectDirectory, "build-impl.xml"));
+        writeResource("netbeansprojectfiles/project.xml", new File(nbprojectDirectory, "project.xml"));
+        writeResource("netbeansprojectfiles/project.properties", new File(nbprojectDirectory, "project.properties"));
+        writeResource("netbeansprojectfiles/genfiles.properties", new File(nbprojectDirectory, "genfiles.properties"));
+        writeResource("netbeansprojectfiles/build-impl.xml", new File(nbprojectDirectory, "build-impl.xml"));
     }
 
     private void writeResource(String resourceName, File outputFile) throws IOException {
