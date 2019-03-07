@@ -3,7 +3,6 @@ package io.paulbaker;
 import io.paulbaker.integration.MavenUtils;
 import lombok.extern.java.Log;
 import org.apache.maven.project.MavenProject;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -11,7 +10,8 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static io.paulbaker.MavenProjectBuilder.builder;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @author Paul Nelson Baker
@@ -21,18 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2019-03
  */
 @Log
-public class ValidationTests {
-
-    @Test
-    public void testTheOtherThing() {
-        log.info("Test was executed");
-    }
-
-    @Test
-    public void testTheThing() {
-        log.info("Test was executed, but will fail");
-        fail("This test has failed intentionally");
-    }
+public class MavenUtilityTests {
 
     public static Stream<Object[]> mavenProjectSupplier() {
         return Arrays.stream(new Object[][]{
@@ -42,7 +31,6 @@ public class ValidationTests {
         });
     }
 
-    //    @Test
     @ParameterizedTest
     @MethodSource("mavenProjectSupplier")
     public void testProjectResolvesToName(MavenProject mavenProject, String expectedName) {
