@@ -1,4 +1,4 @@
-package io.paulbaker;
+package io.paulbaker.testutils;
 
 import org.apache.maven.model.Model;
 import org.apache.maven.project.MavenProject;

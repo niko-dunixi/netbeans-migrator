@@ -6,10 +6,11 @@ import org.apache.maven.project.MavenProject;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static io.paulbaker.MavenProjectBuilder.builder;
+import static io.paulbaker.testutils.MavenProjectBuilder.builder;
+import static io.paulbaker.testutils.StreamUtils.objectArray;
+import static io.paulbaker.testutils.StreamUtils.objectArrayStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -24,11 +25,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class MavenUtilityTests {
 
     public static Stream<Object[]> mavenProjectSupplier() {
-        return Arrays.stream(new Object[][]{
-                new Object[]{builder().artifactId("artifact-id").build(), "artifact-id"},
-                new Object[]{builder().name("name").build(), "name"},
-                new Object[]{builder().artifactId("artifact-id").name("name").build(), "name"}
-        });
+        return objectArrayStream(
+                objectArray(builder().artifactId("artifact-id").build(), "artifact-id"),
+                objectArray(builder().name("name").build(), "name"),
+                objectArray(builder().artifactId("artifact-id").name("name").build(), "name")
+        );
     }
 
     @ParameterizedTest
