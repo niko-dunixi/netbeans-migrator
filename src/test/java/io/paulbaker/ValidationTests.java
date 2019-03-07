@@ -3,6 +3,8 @@ package io.paulbaker;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 /**
  * @author Paul Nelson Baker
  * @author WGU Student Info: pbake22 - #000412290
@@ -11,7 +13,7 @@ import org.junit.jupiter.api.Test;
  * @since 2019-03
  */
 @Log
-public class Validation {
+public class ValidationTests {
 
     @Test
     public void testTheOtherThing() {
@@ -21,6 +23,6 @@ public class Validation {
     @Test
     public void testTheThing() {
         log.info("Test was executed, but will fail");
-        throw new RuntimeException();
+        fail("This test has failed intentionally");
     }
 }
