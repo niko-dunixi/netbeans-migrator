@@ -19,6 +19,4 @@ public class NetbeansFileProducer extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
 
     }
-
-
 }
