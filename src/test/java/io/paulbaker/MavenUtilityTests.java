@@ -39,6 +39,4 @@ public class MavenUtilityTests {
         assertNotNull(name);
         assertEquals(name, expectedName);
     }
-
-
 }
